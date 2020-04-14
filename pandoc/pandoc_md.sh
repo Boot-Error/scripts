@@ -21,5 +21,5 @@ fi
 	$TITLEMETA \
 	--mathjax \
 	--include-in-header ~/Documents/notes.css \
-	--lua-filter ~/Scripts/pandoc/diagram-generator.lua \
-	--lua-filter ~/Scripts/pandoc/link_update.lua 
+	--lua-filter ~/dotfiles/scripts/pandoc/diagram-generator.lua \
+	--lua-filter ~/dotfiles/scripts/pandoc/link_update.lua 
