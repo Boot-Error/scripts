@@ -4,6 +4,7 @@
 # Run screenclip.sh
 # I use in along with sxhkd to screenshot when I press PrintScreen
 
+
 read -r G < <(slop -f "%g")
 FILENAME="Screenshot_from_$(date +%Y-%m-%d_%H-%M-%S).jpg"
 echo $FILENAME

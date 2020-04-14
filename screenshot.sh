@@ -9,15 +9,26 @@ COMMAND=$1
 OPTS=$2
 
 FILENAME="Screenshot_from_$(date +%Y-%m-%d_%H-%M-%S).jpg"
+FILEPATH=~/Pictures/screenshots/$FILENAME
+
+function clip {
+
+	read -r G < <(slop -f "%g")
+	# pkill compton # kill compton to remove terminal transperancy
+	import -window root -crop $G $FILEPATH
+	# compton -b # restart compton, todo make it import args from .xinitrc
+	notify-send "Screenshot captured $FILENAME"
+}
 
 function optimize_paper {
-	convert $1 \
+	clip
+	convert $FILEPATH \
 		-negate \
 		-colorspace gray \
 		-intensity Brightness \
 		-normalize \
 		-black-threshold 50% \
-		$(echo $1 | sed 's/.jpg/_paper.jpg/')
+		$(echo $FILEPATH | sed 's/.jpg/_paper.jpg/')
 }
 
 function screen_record {
